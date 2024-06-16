@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(solar-cell-farm-power-station-alternative-energy-from-sun.jpg);
+  background-size: cover; /* Redimensiona a imagem para cobrir todo o fundo */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-position: center center; /* Centraliza a imagem no fundo */
+  background-attachment: fixed; /* Mantém a imagem fixa ao rolar a página */
+  background-color: #000; /* Cor de fundo de fallback para o caso de a imagem não carregar */
+  height: 100vh;
+}
+
+h1 {
+  background-color: rgba(0, 255, 255, 0.863);
+  font-weight: bold;
+  border: black solid 5px;
+  text-align: center;
+  color: black;
+  padding: 20px;
+  font-size: 40px;
+}
+
+.button_nav {
+  padding: 10px;
+  background-color: gold;
+  font-weight: bold;
+  margin: 10px;
+  color: #000;
+  border-radius: 5px;
+  font-size: medium;
+  margin-left: 20px;
+  border: #000 solid 2px;
+  width: 80px;
+  text-align: center;
+}
+
+.button_nav:hover {
+  scale: 1.1;
+  transition: 400ms;
+  background-color: yellow;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  padding: 15px;
+  list-style: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main section {
+  background-color: white;
+  border: black solid 4px;
+  border-bottom: black solid 10px;
+  border-right: black solid 15px;
+  margin: 20px;
+  padding: 20px;
+  max-width: 100vh;
+}
+
+footer {
+  background-color: black;
+  padding: 20px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+footer p:hover {
+  color: orangered;
+  transition: 400ms;
+}
+
+footer a.topo p:hover {
+  scale: 1.1;
+  color: green;
+  transition: 400ms;
+}
+
+section ol {
+  padding: 20px;
+}
+
+section ol li {
+  font-size: 18px;
+}
+
+section ul {
+  padding: 15px;
+  list-style: "⚡";
+}

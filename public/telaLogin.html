@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="stylesLogin.css" />
+    <title>Login: Enegia Comunitária</title>
+
+    <script>
+      async function validarLogin(event) {
+        event.preventDefault();
+
+        const numeroAcesso = document.getElementById("numeroAcesso").value;
+        const senha = document.getElementById("senha").value;
+
+        const regex = /^[0-3]{4}$/;
+
+        if (!regex.test(numeroAcesso)) {
+          alert(
+            "O Número de Acesso ou a Senha deve conter exatamente 4 caracteres, e apenas os dígitos 0, 1, 2 e 3.",
+          );
+          return false;
+        }
+
+        if (!regex.test(senha)) {
+          alert(
+            "O Número de Acesso ou a Senha deve conter exatamente 4 caracteres, e apenas os dígitos 0, 1, 2 e 3.",
+          );
+          return false;
+        }
+
+        const response = await fetch("http://localhost:3000/signin", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: numeroAcesso,
+            password: senha,
+          }),
+        });
+
+        if (!response.ok) {
+
+          return window.alert("Foi mal, parece que as informações do Login estão incorretas")
+        };
+
+        const authResponse = await response.json();
+
+        localStorage.setItem("access_token", authResponse.access_token);
+
+        console.log(authResponse.access_token);
+
+        console.log(authResponse);
+
+        alert("Login válido! Submetendo formulário...");
+        document.getElementById("loginForm").submit();
+
+        window.location = "../public/index.html"
+      }
+    </script>
+  </head>
+  <body>
+    <header id="Topo">
+      <h1>⚡ Bem vindo ao Enegia Comunitária ⚡</h1>
+      <nav>
+        <ul>
+          <a href="#Login"
+            ><li><button class="button_login">Login</button></li></a
+          >
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section style="margin-top: 0px">
+        <h2>Qual é o nosso objetivo?</h2>
+        <ul>
+          <li>Utilizar energias de fontes sustentáveis.</li>
+          <li>
+            Ajudar pessoas que tem interesse em utilizar esse tipo de energia.
+          </li>
+          <li>
+            Aumentar a quantidade de pessoas que utilizam esse tipo de energia.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Qual é o sentido desse projeto?</h2>
+        <br />
+        <p>
+          Algumas pessoas não tem espaço fisico em suas casas, não tem "Sol"
+          suficiente, a angulação das placas não seria favorável dentre outros
+          motivos.
+        </p>
+        <br />
+        <p>
+          Além disso, utilizar fontes sustentáveis para gerar energia é uma
+          otima forma de ajudar o meio ambiente.
+        </p>
+        <br />
+        <p>
+          A nossa fonte de renda seria por meio de pequenas taxas para gerenciar
+          tudo e o execesso de energia seria vendido.
+        </p>
+      </section>
+
+      <section>
+        <h2>Quais são os beneficios e diferenciais?</h2>
+        <ul>
+          <li>Vamos cuidar de toda parte "chata" para você.</li>
+          <li>
+            Pode investir o valor que quiser.
+            <i>(Porém o rendimento será proporcional)</i>
+          </li>
+          <li>As placas foto-voltaicas não seram instaladas na sua casa.</li>
+          <li>
+            As placas vão ter a manutenção e limpeza diária na Usina Solar, para
+            extrair um maior rendimento.
+          </li>
+          <li>Você pode monitorar o rendimento pelo nosso site.</li>
+        </ul>
+      </section>
+
+      <div id="Login">
+        <form id="loginForm">
+          <h3>LOGIN</h3>
+          <br />
+          <label class="login_label" for="numeroAcesso"
+            >Digite seu Número de Acesso:</label
+          >
+          <br />
+          <input
+            type="text"
+            class="login_input"
+            id="numeroAcesso"
+            maxlength="4"
+            placeholder="0000"
+          />
+          <br />
+          <br />
+          <label class="login_label" for="senha">Digite sua Senha:</label>
+          <br />
+          <input
+            type="password"
+            class="login_input"
+            name=""
+            id="senha"
+            maxlength="4"
+            placeholder="0000"
+          />
+          <br />
+          <br />
+          <input
+            type="button"
+            onclick="validarLogin(event)"
+            value="Enviar"
+            class="button_enviar"
+          />
+        </form>
+        <p class="registrar">
+          Não possui um Número de Acesso ainda? Clique aqui ➔
+          <a href="">Registrar</a> 😉
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>alunosDPprojetaco@gmail.com</p>
+      <a href="#Topo"><p class="voltar_topo">Voltar ao Topo</p></a>
+      <p>(44) 99999-9999</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
